@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <a class="toggle" @click="togleMenu" v-if="!hideToggle">
+        <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
             <i class="fa fa-lg" :class="icon"></i>
         </a>
         <h1 class="title">
@@ -18,12 +18,12 @@ export default {
     },
     computed: {
         icon() {
-            return "fa-angle-left";
+            return this.$store.state.isMenuVisible ? "fa-angle-left" : "fa-angle-down";
         }
     },
     methods: {
         toggleMenu() {
-
+            this.$store.commit('toggleMenu');
         }
     }
 }
