@@ -13,7 +13,8 @@
     "font-awesome": "4.7.0",
     "vuex": "3.0.1",
     "vue-gravatar": "1.2.1",
-    "bootstrap-vue": "2.0.0-rc.11"
+    "bootstrap-vue": "2.0.0-rc.11",
+    "vue-router": "3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
