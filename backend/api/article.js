@@ -1,18 +1,18 @@
 const queries = require('./queries');
 
 module.exports = app => {
-    const { exixtsOrError } = app.api.validation;
+    const { existsOrError } = app.api.validation;
 
     const save = (req, res) => {
         const article = { ...req.body }
         if (req.params.id) article.id = req.params.id;
 
         try {
-            exixtsOrError(article.name, 'Nome não informado');
-            exixtsOrError(article.description, 'Descrição não informada');
-            exixtsOrError(article.categoryId, 'Categoria não informada');
-            exixtsOrError(article.userId, 'Autor não informado');
-            exixtsOrError(article.content, 'Conteúdo não informado');
+            existsOrError(article.name, 'Nome não informado');
+            existsOrError(article.description, 'Descrição não informada');
+            existsOrError(article.categoryId, 'Categoria não informada');
+            existsOrError(article.userId, 'Autor não informado');
+            existsOrError(article.content, 'Conteúdo não informado');
         } catch (msg) {
             res.status(400).send(msg);
         }
@@ -36,7 +36,7 @@ module.exports = app => {
             const rowsDelete = await app.db('articles')
                 .where({ id: req.params.id }).del();
             try {
-                exixtsOrError(rowsDelete, 'Artigo não foi encontrado');
+                existsOrError(rowsDelete, 'Artigo não foi encontrado');
             } catch (msg) {
                 return res.status(400).send(msg);
             }

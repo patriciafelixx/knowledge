@@ -1,12 +1,12 @@
 module.exports = app => {
-    const { exixtsOrError, notExistsOrError } = app.api.validation;
+    const { existsOrError, notExistsOrError } = app.api.validation;
 
     const save = (req, res) => {
         const category = { ...req.body }
         if (req.params.id) category.id = req.params.id;
 
         try {
-            exixtsOrError(category.name, 'Nome não informado');
+            existsOrError(category.name, 'Nome não informado');
         } catch (msg) {
             return res.status(400).send(msg);
         }
@@ -27,7 +27,7 @@ module.exports = app => {
 
     const remove = async (req, res) => {
         try {
-            exixtsOrError(req.params.id, 'Código da categoria não informado.');
+            existsOrError(req.params.id, 'Código da categoria não informado.');
 
             const subcategory = await app.db('categories')
                 .where({ parentId: req.params.id })
@@ -39,7 +39,7 @@ module.exports = app => {
 
             const rowsDeleted = await app.db('categories')
                 .where({ id: req.params.id }).del();
-            exixtsOrError(rowsDeleted, 'categoria não foi encontrada.')
+            existsOrError(rowsDeleted, 'categoria não foi encontrada.')
 
             res.status(204).send();
         } catch (msg) {
