@@ -3,7 +3,7 @@
         <PageTitle icon="fa fa-folder-o" :main="category.name" sub="Categoria" />
         <ul>
             <li v-for="article in articles" :key="article.id">
-                {{ article.name }}
+                <ArticleItem :article="article" />
             </li>
         </ul>
         <div class="load-more">
@@ -17,10 +17,11 @@
 import { baseApiUrl } from '@/global';
 import axios from 'axios';
 import PageTitle from './../template/PageTitle';
+import ArticleItem from "./ArticleItem";
 
 export default {
     name: "ArticleByCategory",
-    components: { PageTitle },
+    components: { PageTitle, ArticleItem },
     data: function() {
         return {
             category: {},
