@@ -16,7 +16,8 @@
     "bootstrap-vue": "2.0.0-rc.11",
     "vue-router": "3.0.1",
     "axios": "0.18.0",
-    "vue-toasted": "1.1.24"
+    "vue-toasted": "1.1.24",
+    "liquor-tree": "0.2.32"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
