@@ -17,7 +17,8 @@
     "vue-router": "3.0.1",
     "axios": "0.18.0",
     "vue-toasted": "1.1.24",
-    "liquor-tree": "0.2.32"
+    "liquor-tree": "0.2.32",
+    "vue-mq": "0.2.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.0.0",
