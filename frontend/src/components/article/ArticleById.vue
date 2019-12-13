@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import 'highlightjs/styles/atom-one-dark.css';
+import hljs from 'highlightjs/highlight.pack.js';
 import { baseApiUrl } from '@/global';
 import axios from 'axios';
 import PageTitle from '../template/PageTitle';
@@ -21,6 +23,11 @@ export default {
     mounted() {
         const url = `${baseApiUrl}/articles/${this.$route.params.id}`;
         axios.get(url).then(res => this.article = res.data);
+    },
+        updated() {
+        document.querySelectorAll('.article-content pre.ql-syntax').forEach(e => {
+            hljs.highlightBlock(e)
+        })
     }
 }
 </script>
@@ -34,8 +41,8 @@ export default {
     .article-content pre {
         padding: 20px;
         border-radius: 8px;
-        background-color: #333;
-        color: #FFF;
+        border: 1px dashed #ccc;
+        font-family: 'Consolas';  
     }
     .article-content img {
         max-width: 100%;
